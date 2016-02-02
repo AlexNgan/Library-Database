@@ -1,14 +1,30 @@
 /* Author: Gloria Ngan
  * 
- * This is an interface with abstract methods
- * that will be defined by client classes MainLibrary
- * and SmallLibrary.
  */
 
-public Interface Library{
+public class Library{
+  //Untested; ArrayList of Strings or Book objects???.
+  private ArrayList<Book> database = new ArrayList<Book>();     //Holds all books.
   
-  addNewBook();
-  removeOldBook();
-  borrowBook();
+  //Constructor.
+  public Library(){
+    //Need to import books from .txt file.
+  }
+  
+  //Modifier method to add a books to database.
+  public addNewBook(Book book){
+    database.add(book);
+  }
+  
+  //Modifier method to remove books from database.
+  public removeOldBook(Book book){
+    database.remove(book);
+  }
+  
+  //Method to mark a book as borrowed if it is available.
+  public borrowBook(){
+    
+  }
+  
   returnBook();
 }
