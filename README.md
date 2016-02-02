@@ -5,3 +5,10 @@ of books with their titles, status, quality, and ISBN. Students and
 teachers can borrow books with different parameters, such as the number
 of books which a certain person can borrow or the time which a book may
 be checked out.
+
+The program includes certain classes:
+- Class Book
+- Class Library with methods (addNewBook(), removeOldBook(), borrow(), return() etc.)
+- Abstract class Borrower
+- Class Student extends abstract class Borrower
+- Class Teacher extends abstract class Borrower
