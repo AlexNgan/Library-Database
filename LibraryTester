@@ -1,0 +1,12 @@
+/* Author: Gloria Ngan
+ * 
+ * This is the main class for the library database. Requires
+ * Book, Borrower, Library, StudentBorrower, and TeacherBorrower.
+ */ 
+
+public class LibraryTester{
+  
+  public static void main(String[] args){
+    
+  }
+}
