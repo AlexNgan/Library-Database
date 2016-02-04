@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /* Author: Gloria Ngan
  * 
  * This is the class that acts as the library, holding
@@ -16,12 +18,12 @@ public class Library{
   }
   
   //Modifier method to add a books to database.
-  public addNewBook(Book book){
+  public void addNewBook(Book book){
     database.add(book);
   }
   
   //Modifier method to remove books from database.
-  public removeOldBook(Book book){
+  public void removeOldBook(Book book){
     database.remove(book);
   }
   
