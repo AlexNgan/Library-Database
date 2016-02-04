@@ -1,5 +1,9 @@
 /* Author: Gloria Ngan
  * 
+ * This is the class that acts as the library, holding
+ * the books and allowing interactions with the books
+ * using methods to add, remove, borrow, return, and
+ * browse the books.
  */
 
 public class Library{
@@ -21,10 +25,18 @@ public class Library{
     database.remove(book);
   }
   
+  //NOTE: DO WE NEED????
   //Method to mark a book as borrowed if it is available.
-  public borrowBook(){
-    
+  public void borrowBook(Book book){
+    book.makeBorrowed();
   }
   
-  returnBook();
+  public void returnBook(Book book){
+    book.makeReturned();
+  }
+  
+  //Method to display all books in the library.
+  public void browse(){
+     System.out.println(database);
+  }
 }
