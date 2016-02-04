@@ -11,4 +11,6 @@ public class StudentBorrower extends Borrower{
   private String name;
   private int grade;
   private String offCLass;
+  private int borrowTime = 14;
+  private int borrowLimit = 2;
 }
