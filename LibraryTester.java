@@ -21,7 +21,7 @@ public class LibraryTester{
       
       switch(ans){ //I'm not sure if this is how you use switch statements
       case 0:
-      
+        quit();
       case 1:
         System.out.println("Enter your file"); 
         loadFile(scan.next());
