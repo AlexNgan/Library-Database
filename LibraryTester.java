@@ -54,7 +54,7 @@ public class LibraryTester{
 
   private static void quit(){
     System.out.println("Enter file name: ");
-    fileName = scan.next() + ".txt";
+    fileName = scan.next();
     isRunning = false;
     FileOutputStream fos = null;
     ObjectOutputStream out = null;
