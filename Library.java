@@ -41,4 +41,17 @@ public class Library{
   public void browse(){
      System.out.println(database);
   }
+  
+  @Override
+  public String bookInfo(){ // do we even need this?? lol
+    String total = "\n"
+    
+    //I actually have no idea how to use iterator but the textbook makes it look easy so plz fix this i love you gloria
+    Iterator<Book> i = database.iterator();
+    while(i.hasNext()){
+      Book b = (Book)i.next();
+      total = total + b.bookInfo();
+    }
+    return total;
+  }
 }
