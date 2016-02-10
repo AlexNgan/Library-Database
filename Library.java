@@ -1,13 +1,5 @@
 import java.util.ArrayList;
 
-/* Author: Gloria Ngan
- * 
- * This is the class that acts as the library, holding
- * the books and allowing interactions with the books
- * using methods to add, remove, borrow, return, and
- * browse the books.
- */
-
 public class Library{
   //Untested; ArrayList of Strings or Book objects???.
   private ArrayList<Book> database = new ArrayList<Book>();     //Holds all books.
