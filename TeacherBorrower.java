@@ -7,8 +7,12 @@
 
 public class TeacherBorrower extends Borrower{
   //Fields for teacher info.
-  private String name;
-  private String teacherID;
-  private int borrowTime = 21;
-  private borrowLimit = 1;
+  //private String name;
+  //private String teacherID;
+  private int borrowTime = 21;    //Three week limit on borrowed material.
+  private int borrowLimit = 1;    //One book limit.
+  
+  public TeacherBorrower(String name, String teacherID){
+    super(name, teacherID);
+  }
 }
