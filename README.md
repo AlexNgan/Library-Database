@@ -12,3 +12,4 @@ The program includes text files to be read by the program and certain classes:
 - Abstract class Borrower
 - Class Student extends abstract class Borrower
 - Class Teacher extends abstract class Borrower
+- Class Runner to read .txt files and interact with the user.
