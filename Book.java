@@ -10,8 +10,8 @@ public class Book{
   private boolean isAvailable = true;             //Boolean for whether the book is borrowed or not.
   
   //Constructor. Params for ISBN, title, author, genre, status.
-  public Book(String o, String t, String a, String g, String s){
-    OSIS = o;
+  public Book(String i, String t, String a, String g, String s){
+    ISBN = i;
     title = t;
     author = a;
     genre = g;
