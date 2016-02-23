@@ -1,0 +1,15 @@
+0-7475-3269-9, Harry Potter and the Philosopher's Stone, J.K. Rowling, Fantasy, Good
+0-7475-3849-2, Harry Potter and the Chamber of Secrets, J.K. Rowling, Fantasy, Fair
+0-7475-4215-5, Harry Potter and the Prisoner of Azkaban, J.K. Rowling, Fantasy, New
+0-7475-4624-X, Harry Potter and the Goblet of Fire, J.K. Rowling, Fantasy, Good
+0-7475-5100-6, Harry Potter and the Order of the Phoenix, J.K. Rowling, Fantasy, Excellent
+0-7475-8108-8, Harry Potter and the Half-Blood Prince, J.K. Rowling, Fantasy, New
+0-545-01022-5, Harry Potter and the Deathly Hallows, J.K. Rowling, Fantasy, Bad
+0-13-797390-0, Jenney's Second Year Latin, Charles Jenney Jr., Textbook, Fair
+978-1-56765-914-6, Physics: The Physical Setting, Landa & Kiefer, Textbook, Poor
+978-0553213119, Moby Dick, Herman Melville, Fiction, Fair
+978-0062409850, Go Set A Watchman, Harper Lee, Fiction, New
+978-0061120084, To Kill A Mockingbird, Harper Lee, Fiction, Fair
+978-0316341516, Mythology, Edith Hamilton, Classics, Poor
+978-0452284241, Animal Farm, George Orwell, Fiction, Excellent
+0073385492, American History: A Survey, Brinkley, Textbook, Bad
