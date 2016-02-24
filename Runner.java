@@ -29,18 +29,18 @@ public class Runner{
       while((line = bufferedReader.readLine()) != null) {
         int start, end;  //For indexs of substring.
         String str;      //Substring holder.
-        for(int i = 0; i < line.length(); i++){        
-          //On first iteration.
-          start = 0;
-    
-          if(i != 0){
+        
+        for(int i = 0; i < line.length(); i++){    
+          if(i == 0){     //On first iteration.
+            start = 0;
+          }else{
             start = line.indexOf(",", start);    //Start where the last substring ended.
           }
           
           end = line.indexOf(",", start);          //Index to stop substring.
           str = line.substring(start, end);
           
-          //System.out.println(str);           
+          System.out.println(str);           
         }
         break;
       }   
