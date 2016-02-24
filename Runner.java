@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 /* Author: Gloria Ngan
  * 
+ * This class contains the methods that control the flow of
+ * the program, calling other classes and methods based on 
+ * user input.
  */
 
 public class Runner{
@@ -13,21 +16,33 @@ public class Runner{
   //Method to read and print text files.
   public void readFile(String fileName){
     
-    // The files to open.
-    String file = fileName;
-    
-    // This will reference one line at a time
-    String line = null;
+    String file = fileName;     // The file to open.
+    String line = null;         // This will reference one line at a time.
     
     try {
       // FileReader reads text files in the default encoding.
       FileReader fileReader = new FileReader(file);
       
-      // Always wrap FileReader in BufferedReader.
+      //Wrap FileReader in BufferedReader.
       BufferedReader bufferedReader = new BufferedReader(fileReader);
       
       while((line = bufferedReader.readLine()) != null) {
-        System.out.println(line);
+        int start, end;  //For indexs of substring.
+        String str;      //Substring holder.
+        for(int i = 0; i < line.length(); i++){        
+          //On first iteration.
+          start = 0;
+    
+          if(i != 0){
+            start = line.indexOf(",", start);    //Start where the last substring ended.
+          }
+          
+          end = line.indexOf(",", start);          //Index to stop substring.
+          str = line.substring(start, end);
+          
+          //System.out.println(str);           
+        }
+        break;
       }   
       
       bufferedReader.close();   //Close file.      
@@ -37,28 +52,6 @@ public class Runner{
     }
     catch(IOException ex) {
       System.out.println("Error reading file '" + file + "'");                  
-      // Or we could just do this: 
-      // ex.printStackTrace();
-    }
-  }
-  
-  //Method run at the start of the program.
-  public void init(){
-    Scanner scan = new Scanner(System.in);
-    System.out.println("Are you a borrower (1) or a librarian (2)? Please enter the corresponding number.");
-    int reply1 = scan.nextInt();
-    
-    //If user is borrowing...
-    if(reply1 == 1){
-     System.out.println("Do you want to A). Browse, B). Check avalability, "    //Gets options for borrower.
-                          + "C). Check out a book, or D). Return a book?"); 
-     String reply2 = scan.nextLine();
-    }
-    //If user is a librarian...
-    else if(reply1 == 2){
-      System.out.println("A). Enter a new book, B. Remove a book, or "     //Gets options for librarian.
-                           + "C. Check borrowing history of a book.");
-    String reply2 = scan.nextLine();
     }
   }
 }
