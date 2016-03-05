@@ -113,14 +113,14 @@ public class Library{
     }
   }
   
-  //Prints out the contents of the Library.
+  //Prints out the teachers.
   public void displayTeachers(){
     for(int i = 0; i < teachers.size(); i++){
       System.out.println(teachers.get(i));
     }
   }
   
-  //Prints out the contents of the Library.
+  //Prints out the students.
   public void displayStudents(){
     for(int i = 0; i < students.size(); i++){
       System.out.println(students.get(i));
@@ -138,8 +138,30 @@ public class Library{
   }
   
   //Method to mark a book as borrowed if it is available.
-  public void borrowBook(Book book){
+  public void borrowBook(Book book, String borrower){
     book.makeBorrowed();
+    
+    try {
+      String content = "Borrowed by:" + borrower;
+      String fileName = book.getTitle() + "Log";
+      
+      File file = new File("F:/AP Java/Library Database/" + fileName +".txt");
+      
+      // If file doesnt exists, then create it.
+      if (!file.exists()) {
+        file.createNewFile();
+      }
+      
+      FileWriter fw = new FileWriter(file.getAbsoluteFile());
+      BufferedWriter bw = new BufferedWriter(fw);
+      bw.write(content);
+      bw.close();
+      
+      System.out.println("Done");
+      
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
   
   public void returnBook(Book book){
@@ -148,6 +170,47 @@ public class Library{
   
   //Method to display all books in the library.
   public void browse(String genre){
-    //TODO
+    ArrayList<Book> sameGenre = new ArrayList<Book>();
+    for(int i = 0; i < database.size(); i++){
+      if(genre.equals((database.get(i)).getGenre()))
+        sameGenre.add(database.get(i));
+    }
+    System.out.println(sameGenre);
+  }
+  
+  //Method to display the history of a book.
+  public void getBookLog(String input){
+    //Search thru database for book.
+    for(int i = 0; i < database.size(); i++){
+      String str = (database.get(i)).getTitle();     //Gets title of book at index.
+      String ISBN = (database.get(i)).getISBN();     //Gets ISBN of book at index.
+      if(input.equals(str) || input.equals(ISBN)){
+        String file = str + "Log.txt";
+        String line;
+        
+        try {
+          // FileReader reads text files in the default encoding.
+          FileReader fileReader = new FileReader(file);
+          
+          //Wrap FileReader in BufferedReader.
+          BufferedReader bufferedReader = new BufferedReader(fileReader);
+          
+          //Prints line.
+          while((line = bufferedReader.readLine()) != null) {
+            System.out.println(line);
+          }   
+          
+          bufferedReader.close();   //Close reader.      
+        }   
+        catch(FileNotFoundException ex) {
+          System.out.println("Unable to open file '" + file + "'");                
+        }
+        catch(IOException ex) {
+          System.out.println("Error reading file '" + file + "'");                  
+        }
+      }else{
+        System.out.println("No such book exists.");
+      }
+    }
   }
 }
