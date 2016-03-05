@@ -29,18 +29,14 @@ public class Library{
       
       //Saves each line as a book object.
       while((line = bufferedReader.readLine()) != null) {
-        String[] str = line.split(", ");
-        String ISBN = str[0];
-        String title = str[1];
-        String author = str[2];
-        String genre = str[3];
-        String status = str[4];
-        Book book = new Book(ISBN, title, author, genre, status);
+        String[] str = line.split(", ");     // Takes a single line and saves info as an array
+                                             // with the format: [ISBN, title, author, etc.]
         
-        database.add(book);
+        Book book = new Book(str[0], str[1], str[2], str[3], str[4]);    //Creates new book with elements in array.
+        database.add(book);                                              //Adds new book to library.
       }   
       
-      bufferedReader.close();   //Close file.      
+      bufferedReader.close();   //Close reader.      
     }
     catch(FileNotFoundException ex) {
       System.out.println("Unable to open file '" + file + "'");                
