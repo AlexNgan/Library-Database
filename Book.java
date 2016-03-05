@@ -28,4 +28,9 @@ public class Book{
   public void makeReturned(){
     isAvailable = true;
   }
+  
+  //Converts object to String.
+  public String toString(){
+        return title + " by: " + author + "; " + ", genre: " + genre + ", ISBN: " + ISBN + ", status: " + status;
+    }
 }
