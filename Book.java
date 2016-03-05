@@ -1,3 +1,5 @@
+import java.io.*;
+
 /* Author: Gloria Ngan and Crystal Lee
  * 
  * This is a class for book objects, which have unique
@@ -29,8 +31,28 @@ public class Book{
     isAvailable = true;
   }
   
+  //Accessor for genre.
+  public String getGenre(){
+    return genre;
+  }
+  
+  //Accessor for title.
+  public String getTitle(){
+    return title;
+  }
+  
+  //Accessor for ISBN.
+  public String getISBN(){
+    return ISBN;
+  }
+
+  //Accessor for title.
+  public boolean getAvailability(){
+    return isAvailable;
+  }
+  
   //Converts object to String.
   public String toString(){
-        return title + " by: " + author + "; " + ", genre: " + genre + ", ISBN: " + ISBN + ", status: " + status;
-    }
+    return title + " by: " + author + "; " + ", genre: " + genre + ", ISBN: " + ISBN + ", status: " + status;
+  }
 }
