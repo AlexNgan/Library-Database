@@ -9,16 +9,24 @@ import java.lang.String;
 
 public class StudentBorrower extends Borrower{
   //Fields for each borrower's info.
-  //private String OSIS;
-  //private String name;            //Name.
-  private int grade;              //Grade.
-  private String offClass;        //Homeroom.
+  private String name;
+  private String OSIS;
+  private String grade;              
+  private String offClass;       
   private int borrowTime = 14;    //Two week limit on borrowed material.
   private int borrowLimit = 2;    //Two book limit.
   
-  public StudentBorrower(String ID, String n, int g, String c){
+  //Constructor.
+  public StudentBorrower(String ID, String n, String g, String c){
     super(n, ID);
+    OSIS = ID;
+    name = n;
     grade = g;
     offClass = c;
   }
+  
+  //Converts object to String.
+  public String toString(){
+        return name + ", " + OSIS + ", grade: " + grade + ", class: " + offClass;
+    }
 }
