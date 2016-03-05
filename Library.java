@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 public class Library{
-  //Untested; ArrayList of Strings or Book objects???.
+
   private ArrayList<Book> database = new ArrayList<Book>();     //Holds all books.
   
   //Method to import books from a .txt file.
@@ -44,6 +44,13 @@ public class Library{
     catch(IOException ex) {
       System.out.println("Error reading file '" + file + "'");                  
     }    
+  }
+  
+  //Prints out the contents of the Library.
+  public void displayBooks(){
+    for(int i = 0; i < database.size(); i++){
+      System.out.println(database.get(i));
+    }
   }
   
   //Modifier method to add a books to database.
