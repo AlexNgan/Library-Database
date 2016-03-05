@@ -1,3 +1,6 @@
+
+import java.io.*;
+import java.util.Arrays;
 import java.util.ArrayList;
 
 /* Author: Gloria Ngan
@@ -12,9 +15,39 @@ public class Library{
   //Untested; ArrayList of Strings or Book objects???.
   private ArrayList<Book> database = new ArrayList<Book>();     //Holds all books.
   
-  //Constructor.
-  public Library(){
-    //Need to import books from .txt file.
+  //Method to import books from a .txt file.
+  public void importBook(String fileName){
+    String file = fileName;     // The file to open.
+    String line;
+    
+    try {
+      // FileReader reads text files in the default encoding.
+      FileReader fileReader = new FileReader(file);
+      
+      //Wrap FileReader in BufferedReader.
+      BufferedReader bufferedReader = new BufferedReader(fileReader);
+      
+      //Saves each line as a book object.
+      while((line = bufferedReader.readLine()) != null) {
+        String[] str = line.split(", ");
+        String ISBN = str[0];
+        String title = str[1];
+        String author = str[2];
+        String genre = str[3];
+        String status = str[4];
+        Book book = new Book(ISBN, title, author, genre, status);
+        
+        database.add(book);
+      }   
+      
+      bufferedReader.close();   //Close file.      
+    }
+    catch(FileNotFoundException ex) {
+      System.out.println("Unable to open file '" + file + "'");                
+    }
+    catch(IOException ex) {
+      System.out.println("Error reading file '" + file + "'");                  
+    }    
   }
   
   //Modifier method to add a books to database.
@@ -27,7 +60,6 @@ public class Library{
     database.remove(book);
   }
   
-  //NOTE: DO WE NEED????
   //Method to mark a book as borrowed if it is available.
   public void borrowBook(Book book){
     book.makeBorrowed();
@@ -38,7 +70,7 @@ public class Library{
   }
   
   //Method to display all books in the library.
-  public void browse(){
-     System.out.println(database);
+  public void browse(String genre){
+    //TODO
   }
 }
