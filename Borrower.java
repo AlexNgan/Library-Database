@@ -4,11 +4,15 @@
  * be extended by teacher and student borrowers.
  */ 
 
-public abstract Borrower{
+public abstract class Borrower{
   private String name;
+  private String ID;
   
-  //Constructor.
-  public Borrower(String n){
+  //Constructor. Params for name and ID of user.
+  public Borrower(String n, String i){
     name = n;
+    ID = i;
   }
+  
+  public abstract Boolean allowBorrow(int time);
 }
