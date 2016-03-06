@@ -17,7 +17,7 @@ public class TeacherBorrower extends Borrower{
     teacherID = ID;
   }
   
-  public Boolean allowBorrow(){
+  public Boolean allowBorrow(int borrowTime){
     if(borrowTime > 21)
       return false;
     else
