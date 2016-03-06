@@ -8,7 +8,6 @@
 public class TeacherBorrower extends Borrower{
   private String teacherName;
   private String teacherID;
-  private int borrowLimit = 1;    //One book limit.
   private Boolean canBorrow;
   
   public TeacherBorrower(String name, String ID){
@@ -17,8 +16,15 @@ public class TeacherBorrower extends Borrower{
     teacherID = ID;
   }
   
-  public Boolean allowBorrow(int borrowTime){
-    if(borrowTime > 21)
+  /*
+   * Teachers can only borrow 2 books at a time, for
+   * 14 days each. If either of these conditions is
+   * exceeded, the teacher cannot borrow books.
+   * Params: Time the book has been borrowed for and
+   * the number of books borrowed.
+   */ 
+  public Boolean allowBorrow(int borrowTime, int bookCount){
+    if(borrowTime >= 21 || bookCount >= 1)
       return false;
     else
       return true;
