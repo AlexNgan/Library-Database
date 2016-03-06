@@ -25,8 +25,15 @@ public class StudentBorrower extends Borrower{
     offClass = c;
   }
   
-  public Boolean allowBorrow(int borrowTime){
-    if(borrowTime > 14)
+  /*
+   * Students can only borrow 2 books at a time, for
+   * 14 days each. If either of these conditions is
+   * exceeded, the student cannot borrow books.
+   * Params: Time the book has been borrowed for and
+   * the number of books borrowed.
+   */ 
+  public Boolean allowBorrow(int borrowTime, int bookCount){
+    if(borrowTime >= 14 || bookCount >= 2)
       return false;
     else
       return true;
