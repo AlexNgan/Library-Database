@@ -56,7 +56,7 @@ public class LibraryTester{
       }else if((reply.toUpperCase()).equals("D")){
         System.out.println("Enter a book title.");
         String book = scan.nextLine();
-        lib.returnBook(book, user);    //Borrow book.
+        lib.returnBook(book, user);    //Return book.
       }
     }
     //If user is a librarian...
