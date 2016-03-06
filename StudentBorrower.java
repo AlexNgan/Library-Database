@@ -13,8 +13,8 @@ public class StudentBorrower extends Borrower{
   private String OSIS;
   private String grade;              
   private String offClass;       
-  private int borrowTime = 14;    //Two week limit on borrowed material.
   private int borrowLimit = 2;    //Two book limit.
+  private Boolean canBorrow;
   
   //Constructor.
   public StudentBorrower(String ID, String n, String g, String c){
@@ -23,6 +23,13 @@ public class StudentBorrower extends Borrower{
     name = n;
     grade = g;
     offClass = c;
+  }
+  
+  public Boolean allowBorrow(){
+    if(borrowTime > 14)
+      return false;
+    else
+      return true;
   }
   
   //Converts object to String.
