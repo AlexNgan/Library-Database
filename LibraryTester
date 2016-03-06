@@ -10,40 +10,83 @@ import java.util.Scanner;
 
 public class LibraryTester{
   
+  //Main method.
+  public static void main(String[] args){
   /* 
    * Method run at the start of the program. Determines the user to be a 
    * borrower or librarian and presents them with their options. 
    * Selected options call methods accordingly.
    */ 
-  public static void init(){
     Scanner scan = new Scanner(System.in);
-    System.out.println("Are you a borrower (1) or a librarian (2)? Please enter the corresponding number.");
-    int reply1 = scan.nextInt();
+    Library lib = new Library();
+    lib.importStudents("Students.txt");
+    lib.importTeachers("Teachers.txt");
+    lib.importBooks("Books.txt");
     
-    //If user is borrowing...
-    if(reply1 == 1){
+    String reply;
+    String user;
+    
+    System.out.println("Enter your name.");
+    user = scan.nextLine();
+    //WILL MAKE METHOD TO CHECK IF ALREADY IN SYSTEM.
+    
+    System.out.println("Are you a borrower (1) or a librarian (2)? Please enter the corresponding number.");
+    reply = scan.nextLine();
+    
+    //If user is a borrower...
+    if(reply.equals("1")){
       System.out.println("Hello, borrower! Please enter the letter of your desired option.");
       System.out.println("Do you want to A). Browse, B). Check avalability, "    //Gets options for borrower.
                            + "C). Check out a book, or D). Return a book?"); 
-      String reply2 = scan.nextLine();
+      reply = scan.nextLine();
       
-      if(reply2.equals("A")){
+      //Logic for options.
+      if((reply.toUpperCase()).equals("A")){
         System.out.println("Enter a genre.");
-        String genre = scan.nextLine();
-        //Library.browse(genre);         //ERROR
+        String genre = (scan.nextLine()).toUpperCase();
+        lib.browse(genre);    //Browse in genre.
+      }else if((reply.toUpperCase()).equals("B")){
+        System.out.println("Enter a book.");
+        String book = scan.nextLine();
+        lib.isAvailable(book);    //Check availability.
+      }else if((reply.toUpperCase()).equals("C")){
+        System.out.println("Enter a book title.");
+        String book = scan.nextLine();
+        lib.returnBook(book, user);    //Borrow book.
       }
     }
     //If user is a librarian...
-    else if(reply1 == 2){
+    else if(reply.equals("2")){
       System.out.println("Hello, librarian! Please enter the letter of your desired option.");
-      System.out.println("A). Enter a new book, B. Remove a book, or "     //Gets options for librarian.
-                           + "C. Check borrowing history of a book.");
-      String reply2 = scan.nextLine();
+      System.out.println("A). Enter a new book, B). Remove a book, or "     //Gets options for librarian.
+                           + "C). Check borrowing history of a book.");
+      reply = scan.nextLine();
+      
+      //Logic for options.
+      if((reply.toUpperCase()).equals("A")){
+        //Params for Book constructor.
+        System.out.println("Enter the ISBN.");
+        String ISBN = scan.nextLine();
+        System.out.println("Enter the title.");
+        String title = scan.nextLine();
+        System.out.println("Enter the author.");
+        String author = scan.nextLine();
+        System.out.println("Enter the genre.");
+        String genre = scan.nextLine();
+        System.out.println("Enter the status.");
+        String stat = scan.nextLine();
+        
+        Book book = new Book(ISBN, title, author, genre, stat); //Creates new Book object.
+        lib.addBook(book);    //Add book.
+      }else if((reply.toUpperCase()).equals("B")){
+        System.out.println("Enter a book title or ISBN.");
+        String book = scan.nextLine();
+        lib.removeBook(book);     //Removes a book.
+      }else if((reply.toUpperCase()).equals("C")){
+        System.out.println("Enter a book title or ISBN.");
+        String book = scan.nextLine();
+        lib.getBookLog(book);     //Retrives history of a book.
+      }
     }
-  }
-  
-  //Main method.
-  public static void main(String[] args){
-    
   }
 }
