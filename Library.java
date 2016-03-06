@@ -18,7 +18,10 @@ public class Library{
   private ArrayList<StudentBorrower> students = new ArrayList<StudentBorrower>();     //Holds all students.
   
   
-  //Method to import books from a .txt file.
+  /*
+   * Method to import books from a .txt file.
+   * Param: Name of file.
+   */ 
   public void importBooks(String fileName){
     String file = fileName;     // The file to open.
     String line;
@@ -129,12 +132,26 @@ public class Library{
   
   //Modifier method to add a books to database.
   public void addBook(Book book){
-    database.add(book);
+      database.add(book);
   }
   
   //Modifier method to remove books from database.
-  public void removeBook(Book book){
-    database.remove(book);
+  public void removeBook(String input){
+    if(findBook(input) != null){
+      database.remove((findBook(input)));
+    }
+  }
+  
+  /*
+   * Method to determine if book in library is available.
+   * Param: String with title or ISBN of book.
+   * Return: True or False.
+   */ 
+  public Boolean isAvailable(String input){
+    if(findBook(input) != null){
+      return (findBook(input)).getAvailability();
+    }
+    return false;
   }
   
   public static void writeTo(String fileName, String content){
@@ -162,7 +179,7 @@ public class Library{
    * Method to mark a book as borrowed if it is available.
    * Params: Title or ISBN of a book and the name of the user.
    */ 
-  public void borrowBook(Book book, String borrower){
+  public void borrowBook(String book, String borrower){
     if(findBook(book) != null){
       (findBook(book)).makeBorrowed();
       String fileName = (findBook(book)).getTitle() + "Log.txt";
@@ -192,12 +209,12 @@ public class Library{
    * Return: List of books in the same genre.
    */ 
   public void browse(String genre){
-    ArrayList<Book> sameGenre = new ArrayList<Book>();
     for(int i = 0; i < database.size(); i++){
-      if(genre.equals((database.get(i)).getGenre()))
-        sameGenre.add(database.get(i));
+      String bookGenre = (database.get(i)).getGenre();
+      if(genre.equals(bookGenre)){
+        System.out.println(database.get(i));
+      }
     }
-    System.out.println(sameGenre);
   }
   
   /* 
