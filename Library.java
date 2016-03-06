@@ -132,13 +132,61 @@ public class Library{
   
   //Modifier method to add a books to database.
   public void addBook(Book book){
-      database.add(book);
+    database.add(book);
+    writeTo("Books.txt", book.toStringList());
   }
   
-  //Modifier method to remove books from database.
+  /* 
+   * Modifier method to remove books from database.
+   * Param: String title or ISBN of book.
+   */ 
   public void removeBook(String input){
+    String file = "Books.txt";     //SHOULDN'T BE HARDCODED BUT EH
     if(findBook(input) != null){
       database.remove((findBook(input)));
+      try {
+        File inFile = new File(file);
+        
+        if (!inFile.isFile()) {
+          System.out.println("Parameter is not an existing file");
+          return;
+        }
+        
+        //Construct the new file that will later be renamed to the original filename.
+        File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
+        
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+        
+        String line = null;
+        
+        //Read from the original file and write to the new
+        //unless content matches data to be removed.
+        while ((line = br.readLine()) != null){
+          if (!line.trim().equals(findBook(input))){
+            pw.println(line);
+            pw.flush();
+          }
+        }
+        pw.close();
+        br.close();
+        
+        //Delete the original file
+        if (!inFile.delete()) {
+          System.out.println("Could not delete file");
+          return;
+        }
+        
+        //Rename the new file to the filename the original file had.
+        if (!tempFile.renameTo(inFile))
+          System.out.println("Could not rename file");
+      }
+      catch (FileNotFoundException ex) {
+        ex.printStackTrace();
+      }
+      catch (IOException ex) {
+        ex.printStackTrace();
+      }
     }
   }
   
@@ -150,7 +198,7 @@ public class Library{
   public void isAvailable(String input){
     if(findBook(input) != null){
       Boolean status = (findBook(input)).getAvailability();
-      System.out.println((findBook(input)).getAvailability());
+      System.out.println(status);
       if(status = true)
         System.out.println(input + " is available.");
       else if(status = false)
