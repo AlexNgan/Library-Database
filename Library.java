@@ -149,10 +149,12 @@ public class Library{
    */ 
   public void isAvailable(String input){
     if(findBook(input) != null){
-      if((findBook(input)).getAvailability())
-        System.out.println((findBook(input)).getTitle() + " is available.");
-      else
-        System.out.println((findBook(input)).getTitle() + " is not available.");
+      Boolean status = (findBook(input)).getAvailability();
+      System.out.println((findBook(input)).getAvailability());
+      if(status = true)
+        System.out.println(input + " is available.");
+      else if(status = false)
+        System.out.println(input + " is not available.");
     }
   }
   
@@ -165,12 +167,13 @@ public class Library{
         file.createNewFile();
       }
       
-      FileWriter fw = new FileWriter(file.getAbsoluteFile());
-      BufferedWriter bw = new BufferedWriter(fw);
-      bw.write(content);
-      bw.close();
+      PrintWriter fw = new PrintWriter(new FileWriter(file, true));
+      BufferedWriter writer = new BufferedWriter(fw);
+      writer.newLine();
+      writer.append(content + "\n");
+      writer.close();
       
-      System.out.println("Done");
+      System.out.println("Done.");
       
     } catch (IOException e) {
       e.printStackTrace();
@@ -241,8 +244,8 @@ public class Library{
    */ 
   public void getBookLog(String input){
     String line;
+    String file = (findBook(input)).getTitle() + "Log.txt";
     if(findBook(input) != null){     //If String of book exists, the book object is retrieved.
-      String file = (findBook(input)).getTitle() + "Log.txt";
       try {
         // FileReader reads text files in the default encoding.
         FileReader fileReader = new FileReader(file);
