@@ -8,13 +8,20 @@
 public class TeacherBorrower extends Borrower{
   private String teacherName;
   private String teacherID;
-  private int borrowTime = 21;    //Three week limit on borrowed material.
   private int borrowLimit = 1;    //One book limit.
+  private Boolean canBorrow;
   
   public TeacherBorrower(String name, String ID){
     super(name, ID);
     teacherName = name;
     teacherID = ID;
+  }
+  
+  public Boolean allowBorrow(){
+    if(borrowTime > 21)
+      return false;
+    else
+      return true;
   }
   
   public String toString(){
