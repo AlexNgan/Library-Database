@@ -137,15 +137,9 @@ public class Library{
     database.remove(book);
   }
   
-  //Method to mark a book as borrowed if it is available.
-  public void borrowBook(Book book, String borrower){
-    book.makeBorrowed();
-    
+  public static void writeTo(String fileName, String content){
     try {
-      String content = "Borrowed by:" + borrower;
-      String fileName = book.getTitle() + "Log";
-      
-      File file = new File("F:/AP Java/Library Database/" + fileName +".txt");
+      File file = new File("F:/AP Java/Library Database/" + fileName);
       
       // If file doesnt exists, then create it.
       if (!file.exists()) {
@@ -164,11 +158,39 @@ public class Library{
     }
   }
   
-  public void returnBook(Book book){
-    book.makeReturned();
+  /* 
+   * Method to mark a book as borrowed if it is available.
+   * Params: Title or ISBN of a book and the name of the user.
+   */ 
+  public void borrowBook(Book book, String borrower){
+    if(findBook(book) != null){
+      (findBook(book)).makeBorrowed();
+      String fileName = (findBook(book)).getTitle() + "Log.txt";
+      String content = "Returned by:" + borrower;
+      
+      writeTo(fileName, content);
+    }
   }
   
-  //Method to display all books in the library.
+  /* 
+   * Method to mark a book as returned if possible.
+   * Params: Title or ISBN of a book and the name of the user.
+   */ 
+  public void returnBook(String book, String borrower){
+    if(findBook(book) != null){
+      (findBook(book)).makeReturned();
+      String fileName = (findBook(book)).getTitle() + "Log.txt";
+      String content = "Borrowed by:" + borrower;
+      
+      writeTo(fileName, content);
+    }
+  }
+  
+  /*
+   * Method to display all books of a genre in the library.
+   * Param: String with the genre of a book.
+   * Return: List of books in the same genre.
+   */ 
   public void browse(String genre){
     ArrayList<Book> sameGenre = new ArrayList<Book>();
     for(int i = 0; i < database.size(); i++){
@@ -178,39 +200,52 @@ public class Library{
     System.out.println(sameGenre);
   }
   
-  //Method to display the history of a book.
-  public void getBookLog(String input){
-    //Search thru database for book.
+  /* 
+   * Finds book object based on String. Basically converts
+   * from String to Book.
+   * Param: String containing title or ISBN
+   * Return: Book object with a title or ISBN matching the input.
+   */ 
+  public Book findBook(String input){
     for(int i = 0; i < database.size(); i++){
       String str = (database.get(i)).getTitle();     //Gets title of book at index.
       String ISBN = (database.get(i)).getISBN();     //Gets ISBN of book at index.
-      if(input.equals(str) || input.equals(ISBN)){
-        String file = str + "Log.txt";
-        String line;
+      if(input.equals(str) || input.equals(ISBN))
+        return database.get(i);
+    }
+    return null;
+  } 
+  
+  /* 
+   * Method to display the history of a book.
+   * Param: String with the title or ISBN of a book.
+   */ 
+  public void getBookLog(String input){
+    String line;
+    if(findBook(input) != null){     //If String of book exists, the book object is retrieved.
+      String file = (findBook(input)).getTitle() + "Log.txt";
+      try {
+        // FileReader reads text files in the default encoding.
+        FileReader fileReader = new FileReader(file);
         
-        try {
-          // FileReader reads text files in the default encoding.
-          FileReader fileReader = new FileReader(file);
-          
-          //Wrap FileReader in BufferedReader.
-          BufferedReader bufferedReader = new BufferedReader(fileReader);
-          
-          //Prints line.
-          while((line = bufferedReader.readLine()) != null) {
-            System.out.println(line);
-          }   
-          
-          bufferedReader.close();   //Close reader.      
+        //Wrap FileReader in BufferedReader.
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        
+        //Prints line.
+        while((line = bufferedReader.readLine()) != null) {
+          System.out.println(line);
         }   
-        catch(FileNotFoundException ex) {
-          System.out.println("Unable to open file '" + file + "'");                
-        }
-        catch(IOException ex) {
-          System.out.println("Error reading file '" + file + "'");                  
-        }
-      }else{
-        System.out.println("No such book exists.");
+        
+        bufferedReader.close();   //Close reader.      
+      }   
+      catch(FileNotFoundException ex) {
+        System.out.println("Unable to open file '" + file + "'");                
       }
+      catch(IOException ex) {
+        System.out.println("Error reading file '" + file + "'");                  
+      }
+    }else{
+      System.out.println("No such book exists.");
     }
   }
 }
