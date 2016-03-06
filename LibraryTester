@@ -12,11 +12,11 @@ public class LibraryTester{
   
   //Main method.
   public static void main(String[] args){
-  /* 
-   * Method run at the start of the program. Determines the user to be a 
-   * borrower or librarian and presents them with their options. 
-   * Selected options call methods accordingly.
-   */ 
+    /* 
+     * Method run at the start of the program. Determines the user to be a 
+     * borrower or librarian and presents them with their options. 
+     * Selected options call methods accordingly.
+     */ 
     Scanner scan = new Scanner(System.in);
     Library lib = new Library();
     lib.importStudents("Students.txt");
@@ -52,40 +52,44 @@ public class LibraryTester{
       }else if((reply.toUpperCase()).equals("C")){
         System.out.println("Enter a book title.");
         String book = scan.nextLine();
+        lib.borrowBook(book, user);    //Borrow book.
+      }else if((reply.toUpperCase()).equals("D")){
+        System.out.println("Enter a book title.");
+        String book = scan.nextLine();
         lib.returnBook(book, user);    //Borrow book.
       }
-    }
-    //If user is a librarian...
-    else if(reply.equals("2")){
-      System.out.println("Hello, librarian! Please enter the letter of your desired option.");
-      System.out.println("A). Enter a new book, B). Remove a book, or "     //Gets options for librarian.
-                           + "C). Check borrowing history of a book.");
-      reply = scan.nextLine();
-      
-      //Logic for options.
-      if((reply.toUpperCase()).equals("A")){
-        //Params for Book constructor.
-        System.out.println("Enter the ISBN.");
-        String ISBN = scan.nextLine();
-        System.out.println("Enter the title.");
-        String title = scan.nextLine();
-        System.out.println("Enter the author.");
-        String author = scan.nextLine();
-        System.out.println("Enter the genre.");
-        String genre = scan.nextLine();
-        System.out.println("Enter the status.");
-        String stat = scan.nextLine();
+      //If user is a librarian...
+      else if(reply.equals("2")){
+        System.out.println("Hello, librarian! Please enter the letter of your desired option.");
+        System.out.println("A). Enter a new book, B). Remove a book, or "     //Gets options for librarian.
+                             + "C). Check borrowing history of a book.");
+        reply = scan.nextLine();
         
-        Book book = new Book(ISBN, title, author, genre, stat); //Creates new Book object.
-        lib.addBook(book);    //Add book.
-      }else if((reply.toUpperCase()).equals("B")){
-        System.out.println("Enter a book title or ISBN.");
-        String book = scan.nextLine();
-        lib.removeBook(book);     //Removes a book.
-      }else if((reply.toUpperCase()).equals("C")){
-        System.out.println("Enter a book title or ISBN.");
-        String book = scan.nextLine();
-        lib.getBookLog(book);     //Retrives history of a book.
+        //Logic for options.
+        if((reply.toUpperCase()).equals("A")){
+          //Params for Book constructor.
+          System.out.println("Enter the ISBN.");
+          String ISBN = scan.nextLine();
+          System.out.println("Enter the title.");
+          String title = scan.nextLine();
+          System.out.println("Enter the author.");
+          String author = scan.nextLine();
+          System.out.println("Enter the genre.");
+          String genre = scan.nextLine();
+          System.out.println("Enter the status.");
+          String stat = scan.nextLine();
+          
+          Book book = new Book(ISBN, title, author, genre, stat); //Creates new Book object.
+          lib.addBook(book);    //Add book.
+        }else if((reply.toUpperCase()).equals("B")){
+          System.out.println("Enter a book title or ISBN.");
+          String book = scan.nextLine();
+          lib.removeBook(book);     //Removes a book.
+        }else if((reply.toUpperCase()).equals("C")){
+          System.out.println("Enter a book title or ISBN.");
+          String book = scan.nextLine();
+          lib.getBookLog(book);     //Retrives history of a book.
+        }
       }
     }
   }
