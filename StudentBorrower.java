@@ -25,7 +25,7 @@ public class StudentBorrower extends Borrower{
     offClass = c;
   }
   
-  public Boolean allowBorrow(){
+  public Boolean allowBorrow(int borrowTime){
     if(borrowTime > 14)
       return false;
     else
