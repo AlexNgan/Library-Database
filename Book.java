@@ -54,6 +54,10 @@ public class Book{
     return isAvailable;
   }
   
+  public String toStringList(){
+    return ISBN + ", " + title + ", " + author + ", " + genre + ", " + status;
+  }
+  
   @Override
   //Converts object to String.
   public String toString(){
