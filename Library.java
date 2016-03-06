@@ -145,13 +145,15 @@ public class Library{
   /*
    * Method to determine if book in library is available.
    * Param: String with title or ISBN of book.
-   * Return: True or False.
+   * Return: String with status of book.
    */ 
-  public Boolean isAvailable(String input){
+  public void isAvailable(String input){
     if(findBook(input) != null){
-      return (findBook(input)).getAvailability();
+      if((findBook(input)).getAvailability())
+        System.out.println((findBook(input)).getTitle() + " is available.");
+      else
+        System.out.println((findBook(input)).getTitle() + " is not available.");
     }
-    return false;
   }
   
   public static void writeTo(String fileName, String content){
@@ -183,7 +185,7 @@ public class Library{
     if(findBook(book) != null){
       (findBook(book)).makeBorrowed();
       String fileName = (findBook(book)).getTitle() + "Log.txt";
-      String content = "Returned by:" + borrower;
+      String content = "Borrowed by:" + borrower;
       
       writeTo(fileName, content);
     }
@@ -197,7 +199,7 @@ public class Library{
     if(findBook(book) != null){
       (findBook(book)).makeReturned();
       String fileName = (findBook(book)).getTitle() + "Log.txt";
-      String content = "Borrowed by:" + borrower;
+      String content = "Returned by:" + borrower;
       
       writeTo(fileName, content);
     }
