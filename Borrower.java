@@ -14,5 +14,5 @@ public abstract class Borrower{
     ID = i;
   }
   
-  public abstract Boolean allowBorrow(int time);
+  public abstract Boolean allowBorrow(int time, int books);
 }
