@@ -1,4 +1,4 @@
-/* Author: Gloria Ngan
+/* Author: Alex
  * 
  * This is an abstract class that will
  * be extended by teacher and student borrowers.
