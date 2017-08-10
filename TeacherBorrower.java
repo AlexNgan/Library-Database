@@ -1,4 +1,4 @@
-/* Author: Gloria Ngan
+/* Author: Alex
  * 
  * This class regulates teachers borrowing books. Restrictions
  * include a one book limit and a three week limit on borrowed
