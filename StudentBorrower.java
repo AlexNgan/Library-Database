@@ -1,6 +1,6 @@
 import java.lang.String;
 
-/* Author: Gloria Ngan
+/* Author: Alex
  * 
  * This class regulates students borrowing books. Restrictions
  * include a two book limit and a two week limit on borrowed
