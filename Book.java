@@ -1,7 +1,6 @@
 import java.io.*;
 
-/* Author: Gloria Ngan and Crystal Lee
- * 
+/* 
  * This is a class for book objects, which have unique
  * attributes like titles, authors, physical states,
  * and availibility.
