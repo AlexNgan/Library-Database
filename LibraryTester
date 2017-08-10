@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-/* Author: Gloria Ngan
+/* Author: Alex
  * 
  * This is the main class for the library database. Requires
  * Book, Borrower, Library, StudentBorrower, TeacherBorrower,
