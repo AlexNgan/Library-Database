@@ -1,4 +1,4 @@
-/* Author: Alex
+/* Author: Mortyyy
  * 
  * This is an abstract class that will
  * be extended by teacher and student borrowers.
