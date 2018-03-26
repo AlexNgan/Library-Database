@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-/* Author: Alex
+/* Author: Mortyyy
  * 
  * This is the class that acts as the library, holding
  * the books and allowing interactions with the books
